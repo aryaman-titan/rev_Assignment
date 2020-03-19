@@ -19,13 +19,7 @@ key += random.choice(alphabets)
 key += random.choice(alphabets)
 key += chr(300 - (ord(key[2])+ord(key[3])))
 
-# Get the present working directory of the file so that it 
-# works in any directory where our binary exists
-
-shell = process('sh')
-shell.sendline('pwd')
-pwd = shell.recvline(keepends=False)
-io = process([pwd+'/glowwine',key])
+io = process(['glowwine',key])
 print("Using key : ", key)
 output = io.recvline()
 print(output)
